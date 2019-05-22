@@ -24,9 +24,12 @@ function createViewModel() {
     viewModel.onTap = () => {
         viewModel.set("message", 'running...');
         const inter = setInterval(() => {
+            var nativeDict = NSDictionary.dictionaryWithObjectForKey("value", "key".repeat(1000));
             var message = {
-                value: {  }
+                value: { dictionaryPtr: interop.handleof(nativeDict).toNumber() }
             };
+            // increase reference count to account for `dictionaryPtr`
+            nativeDict.retain();
             worker.postMessage(message);
         });
 
