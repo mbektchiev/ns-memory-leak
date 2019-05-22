@@ -36,7 +36,7 @@ function createViewModel() {
         setTimeout(() => {
             clearInterval(inter);
             viewModel.set("message", 'finished');
-        }, 30 * 1000);
+        }, 30 * 60 * 1000);
     };
 
     return viewModel;
