@@ -17,6 +17,10 @@ function createViewModel() {
 
     var worker = new Worker("./worker.js");
 
+    viewModel.onGc = () => {
+        console.log("GC");
+        __collect();
+    };
     viewModel.onTap = () => {
         viewModel.set("message", 'running...');
         const inter = setInterval(() => {
